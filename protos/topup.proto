@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package topup;
+
+service InitSam {
+    rpc Init (InitRequest) returns (InitResponse) {}
+    rpc Auth (AuthRequest) returns (AuthResponse) {}
+}
+
+message AuthRequest {
+    string c_terminal = 1;
+    string hash = 2;
+}
+
+message AuthResponse {
+    string token = 1;
+    string message = 2;
+    int32 statusCode = 3;
+}
+
+message InitRequest {
+    string token = 1;
+    string c_card = 2;
+}
+
+message InitResponse {
+    string message = 1;
+    int32 statusCode = 2;
+}

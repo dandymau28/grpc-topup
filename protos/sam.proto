@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService.Protos";
+
+package sam;
+
+service TopUpService {
+    rpc InitialSam (CommandRequest) returns (CommandResponse);
+    rpc TopUpSam (CommandRequest) returns (CommandResponse);
+}
+
+message CommandRequest {
+    bytes samId = 1;
+    bytes response = 2;
+    int32 responseLength = 3;
+    int32 sequence = 4;
+    int32 status = 5;
+    int32 ErrorCode = 6;
+}
+
+message CommandResponse {
+    bytes command = 1;
+    int32 commandLength = 2;
+    int32 sequence = 3;
+    int32 status = 4;
+    int32 ErrorCode = 5;
+}
